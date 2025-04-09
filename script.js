@@ -27,7 +27,7 @@ const resetBtn = document.getElementById('resetBtn');
 
 function updateProgressBar(minutes) {
   const remaining = Math.max(TOTAL_MINUTES - minutes, 0);
-  const percentage = Math.min((minutes / TOTAL_MINUTES) * 100, 100).toFixed(1);
+  const percentage = Math.min((minutes / TOTAL_MINUTES) * 100, 100).toFixed(2);
   progressFill.style.width = `${percentage}%`;
   progressText.textContent = `${percentage}%`;
   remainingText.textContent = `You have ${remaining} minutes left.`;
