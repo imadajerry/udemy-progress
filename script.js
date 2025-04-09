@@ -2,9 +2,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebas
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 const firebaseConfig = {
   apiKey: "AIzaSyBydkLqBW6p9Dyy47ScQ70SCcgsJSls15E",
   authDomain: "udemy-progress-tracker.firebaseapp.com",
@@ -15,6 +12,8 @@ const firebaseConfig = {
   measurementId: "G-CQTLNY509X"
 };
 
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const TOTAL_MINUTES = 1795;
 let completedMinutes = 0;
