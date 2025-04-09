@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Progress Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Udemy Course Progress</h2>
+
+        <div class="progress-bar-wrapper">
+            <div class="progress-bar-fill" id="progressFill"></div>
+            <div class="progress-text" id="progressText">0%</div>
+        </div>
+
+
+        <div class="form-wrapper">
+            <form id="progressForm">
+                <input type="number" id="minutesInput" placeholder="Enter minutes completed" min="1" required />
+                <button class="btn add-btn" type="submit">Add Progress</button>
+            </form>
+            <button id="resetBtn" class="btn reset-btn" >Reset Progress</button>
+        </div>
+
+        <p id="remainingText"></p>
+    </div>
+</body>
+</html>

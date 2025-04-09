@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+}
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.progress-bar-wrapper {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    height: 30px;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #0088FF;
+    width: 0%;
+    transition: width 0.3s ease-in-out;
+}
+
+.progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    inset: 0
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+input, .btn {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.btn {
+    border: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.add-btn, .reset-btn {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.reset-btn {
+    background-color: #1e1e1e ; 
+    color: white; 
+    border: 1px solid white;
+}    
+
+.add-btn:hover {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+}
+
+
+.reset-btn:hover {
+    background-color: #f90b31;
+}
