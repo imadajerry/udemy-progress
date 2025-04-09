@@ -14,7 +14,7 @@ function updateProgress() {
     const percentage = Math.min((completedMinutes / TOTAL_MINUTES) * 100, 100).toFixed(1);
     progressFill.style.width = `${percentage}%`;
     progressText.textContent = `${percentage}%`;
-    remainingText.textContent = `You have ${remaining} minutes left.`;
+    remainingText.innerHTML = `Jerry has <b>${remaining} minutes</b> of content left to complete.`;
 }
 
 progressForm.addEventListener('submit', (e) => {
