@@ -34,18 +34,22 @@ function updateProgressBar(minutes) {
 }
 
 async function loadProgress() {
-  const docRef = doc(db, "progress", userId);
-  const snapshot = await getDoc(docRef);
-  if (snapshot.exists()) {
-    completedMinutes = snapshot.data().completedMinutes || 0;
-    updateProgressBar(completedMinutes);
-  } else {
-    await setDoc(docRef, { completedMinutes: 0 });
+  const docRef = doc(db, "progress", "sharedUser");
+  try {
+    const snapshot = await getDoc(docRef);
+    if (snapshot.exists()) {
+        completedMinutes = snapshot.data().completedMinutes || 0;
+        updateProgressBar(completedMinutes);
+      } else {
+        await setDoc(docRef, { completedMinutes: 0 });
+      }
+  } catch (err) {
+    console.error("Error getting document:", err);
   }
 }
 
 async function saveProgress(minutes) {
-  const docRef = doc(db, "progress", userId);
+  const docRef = doc(db, "progress", "sharedUser");
   await setDoc(docRef, { completedMinutes: minutes });
 }
 
