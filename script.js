@@ -2,40 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebas
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
-const auth = getAuth(app);
-
-const loginBtn = document.getElementById("google-login");
-const logoutBtn = document.getElementById("logout");
-const userInfo = document.getElementById("user-info");
-
-const provider = new GoogleAuthProvider();
-
-loginBtn.addEventListener("click", () => {
-  signInWithPopup(auth, provider)
-    .then(result => {
-      console.log("Signed in:", result.user);
-    })
-    .catch(err => console.error(err));
-});
-
-logoutBtn.addEventListener("click", () => {
-  signOut(auth).then(() => {
-    console.log("Logged out");
-  });
-});
-
-onAuthStateChanged(auth, user => {
-  if (user) {
-    userInfo.textContent = `Logged in as: ${user.displayName || user.email}`;
-    loginBtn.style.display = "none";
-    logoutBtn.style.display = "inline";
-    initFirestoreForUser(user.uid); // 👈 Hook your progress tracking to their ID
-  } else {
-    userInfo.textContent = "Not logged in";
-    loginBtn.style.display = "inline";
-    logoutBtn.style.display = "none";
-  }
-});
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const firebaseConfig = {
   apiKey: "AIzaSyBydkLqBW6p9Dyy47ScQ70SCcgsJSls15E",
@@ -47,8 +15,6 @@ const firebaseConfig = {
   measurementId: "G-CQTLNY509X"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 const TOTAL_MINUTES = 1795;
 let completedMinutes = 0;
@@ -70,7 +36,7 @@ function updateProgressBar(minutes) {
 }
 
 async function loadProgress() {
-  const docRef = doc(db, "progress", "sharedUser");
+  const docRef = doc(db, "progress", userId);
   try {
     const snapshot = await getDoc(docRef);
     if (snapshot.exists()) {
@@ -85,7 +51,7 @@ async function loadProgress() {
 }
 
 async function saveProgress(minutes) {
-  const docRef = doc(db, "progress", "sharedUser");
+  const docRef = doc(db, "progress", userId);
   await setDoc(docRef, { completedMinutes: minutes });
 }
 
