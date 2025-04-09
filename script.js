@@ -30,7 +30,7 @@ function updateProgressBar(minutes) {
   const percentage = Math.min((minutes / TOTAL_MINUTES) * 100, 100).toFixed(2);
   progressFill.style.width = `${percentage}%`;
   progressText.textContent = `${percentage}%`;
-  remainingText.textContent = `You have ${remaining} minutes left.`;
+  remainingText.innerHTML = `Jerry has <b>${remaining} minutes</b> of content left to complete.`;
 }
 
 async function loadProgress() {
