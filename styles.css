@@ -42,7 +42,9 @@ body {
     text-align: center;
     line-height: 30px;
     font-weight: bold;
-    inset: 0
+    inset: 0;
+    color: black;
+    transition: color 0.3s ease-in-out;
 }
 
 .form-wrapper {

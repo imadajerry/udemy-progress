@@ -73,3 +73,15 @@ resetBtn.addEventListener('click', async () => {
 });
 
 loadProgress();
+
+// Progress-bar color
+const percentage = Math.min((minutes / TOTAL_MINUTES) * 100, 100).toFixed(1);
+progressFill.style.width = `${percentage}%`;
+progressText.textContent = `${percentage}%`;
+
+// Change text color to white if percentage is over 50%
+if (percentage >= 50) {
+  progressText.style.color = 'white';
+} else {
+  progressText.style.color = 'black';
+}
