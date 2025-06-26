@@ -22,17 +22,32 @@ body {
 .progress-bar-wrapper {
     width: 100%;
     background-color: #e0e0e0;
-    border-radius: 10px;
+    border-radius: 30px;
     overflow: hidden;
     margin: 20px 0;
     height: 30px;
     position: relative;
+    background: linear-gradient(
+        #d6d6d6 20%,
+        #eaeaea 50%,
+        #d6d6d6 80%
+    );
 }
 
 .progress-bar-fill {
+    position: relative;
     height: 100%;
-    background-color: #A435F0;
     width: 0%;
+    border-radius: 30px;
+    overflow: hidden;
+    background: linear-gradient(
+        120deg,
+        #A435F0 30%,
+        #c75aff 50%,
+        #A435F0 70%
+    );
+    background-size: 200% 100%;
+    animation: pulseFill 2s infinite linear;
     transition: width 0.3s ease-in-out;
 }
 
@@ -83,7 +98,15 @@ input, .btn {
     border: none;
 }
 
-
 .reset-btn:hover {
     background-color: #f90b31;
+}
+
+@keyframes pulseFill {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: -200% 0%;
+    }
 }
