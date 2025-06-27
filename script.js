@@ -35,7 +35,7 @@ function updateProgressBar(minutes) {
   const percentage = Math.min((minutes / TOTAL_MINUTES) * 100, 100).toFixed(2);
   progressFill.style.width = `${percentage}%`;
   progressText.textContent = `${percentage}%`;
-  remainingText.innerHTML = `Jerry has <b>${remaining} minutes</b> of content left to complete.`;
+  remainingText.innerHTML = `Jerry has <b class="udemy">${remaining} minutes</b> of content left to complete.`;
   if (percentage >= 50) {
     progressText.style.color = "white";
   } else {
